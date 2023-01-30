@@ -10,7 +10,7 @@ SRCS_SO_LONG = 	parsing/ft_check_wall.c \
 				parsing/ft_check_item.c \
 				parsing/ft_map_info.c \
 				parsing/ft_way_is_ok.c \
-				ft_render.c \
+				game/ft_render.c \
 
 LIST_OBJS_SO_LONG = $(SRCS_SO_LONG:.c=.o) 
 

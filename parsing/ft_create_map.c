@@ -6,7 +6,7 @@
 /*   By: cbacquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:31:43 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/01/26 15:02:17 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:41:00 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	**ft_read_map(t_map *map)
 	
 	fd = open("maps/map_basic.ber", O_RDONLY);
 	map->height = ft_count_line(fd);
+	
 	close (fd);
 	fd = open("maps/map_basic.ber", O_RDONLY);
 	map->map = ft_fill_map(map->map, map->height, fd);

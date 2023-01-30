@@ -6,7 +6,7 @@
 /*   By: cbacquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:58:50 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/01/26 16:22:40 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:47:18 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,23 @@ typedef struct s_map
 	
 }	t_map;
 
+typedef struct s_data {
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixels;
+	int		line_length;
+	int		endian;
+	char	*name;
+}	t_data;
+
+typedef struct s_vars 
+{
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
 int		ft_map_is_rectangle(char **map);
 int		ft_map_is_valid(char **map, int nb_line);
 int 	ft_count_line(int fd);
@@ -64,6 +81,7 @@ int		ft_check_up(int x, int y, t_map *map);
 int		ft_check_down(int x, int y, t_map *map);
 int		ft_check_left(int x, int y, t_map *map);
 int		ft_check_right(int x, int y, t_map *map);
-int 	ft_close(int keycode, t_vars *vars);
+int 	ft_close(int keycode, t_data *img);
+int		ft_close_mouse(void);
 
 # endif
