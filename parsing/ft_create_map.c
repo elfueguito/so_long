@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	ft_map_is_rectangle(char **map)
 {
@@ -28,9 +28,9 @@ int	ft_map_is_rectangle(char **map)
 
 int ft_map_is_valid(char **map, int nb_line)
 {
-	int i;
+//	int i;
 	
-	i = 0;
+//	i = 0;
 	if (ft_map_is_rectangle(map))
 		if (ft_wall_is_ok(map, nb_line))
 			return (1);
@@ -62,7 +62,7 @@ char	**ft_fill_map(char **map, int nb_line, int fd)
 	map[nb_line] = NULL;
 	while(nb_line > 0)
 	{
-		map[i] = get_next_line_bis(fd);
+		map[i] = get_next_line(fd);
 		nb_line--;
 		i++;
 	}

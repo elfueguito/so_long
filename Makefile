@@ -1,82 +1,67 @@
-.PHONY : all clean fclean re libft ftprintf mlx
+.PHONY: 		clean fclean re norm
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-
-SO_LONG_HEADERS = so_long.h
 NAME = so_long
-SRCS_SO_LONG = 	parsing/ft_check_wall.c \
-				parsing/ft_create_map.c \
-				parsing/ft_check_item.c \
-				parsing/ft_map_info.c \
-				parsing/ft_way_is_ok.c \
-				game/ft_render.c \
 
-LIST_OBJS_SO_LONG = $(SRCS_SO_LONG:.c=.o) 
+CC = gcc
 
-#-----------------------------------#
+ifeq ($(shell uname),Linux)
+   # Linux-specific commands
+	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
+	CFLAGS = -Wextra -Werror -ggdb
+else
+   # Mac OS X-specific commands
+	CFLAGS = -Wall -Wextra -Werror
+	MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
+endif
 
-LIBFT_HEADERS = Libft/libft.h
-NAME_LIBFT = Libft/libft.a
 
-#-------------------------------------#
+SRC_DIR = .
+OBJ_DIR = .obj
 
-FT_PRINTF = ft_printf/ft_printf.h
-NAME_FT_PRINTF = ft_printf/libftprintf.a
+LIBFT_A		= libft.a
+LIBF_DIR 	= libft/
+LIBFT		= $(addprefix $(LIBF_DIR), $(LIBFT_A))
 
-#-------------------------------------#
+PRINT_A		= libftprintf.a
+PRINT_DIR 	= ft_printf/
+PRINT		= $(addprefix $(PRINT_DIR), $(PRINT_A))
 
-MLX_DIR = ./mlx/
-MLX = mlx/mlx.h
-NAME_MLX = mlx/libmlx.a
-MFLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+MLX_A		= libmlx.a
+MLX_DIR 	= mlx/
+MLX			= $(addprefix $(MLX_DIR), $(MLX_A))
 
-#--------------------------------------#
+SRC = $(SRC_DIR)/game/ft_render.c \
+      $(SRC_DIR)/parsing/ft_check_wall.c \
+      $(SRC_DIR)/parsing/ft_check_item.c \
+      $(SRC_DIR)/parsing/ft_create_map.c \
+      $(SRC_DIR)/parsing/ft_map_info.c \
+      $(SRC_DIR)/parsing/ft_way_is_ok.c \
 
-DIR_HEADERS = .
-DIR_OBJS_SO_LONG = objs/
-
-#---------------------------------------------------------------#
-
-OBJS_SO_LONG = $(addprefix $(DIR_OBJS_SO_LONG), $(LIST_OBJS_SO_LONG))
-
-$(NAME): libft ftprintf mlx $(OBJS_SO_LONG) $(SO_LONG_HEADERS) Makefile
-	@$(CC) $(CFLAGS) -o $(NAME) -I $(DIR_HEADERS) -I . -I $(SO_LONG_HEADERS) -I Libft $(NAME_LIBFT) -I ftprintf $(NAME_FT_PRINTF)  -I mlx $(MFLAGS) $(NAME_MLX) -o $(NAME) $(OBJS_SO_LONG)
-#	@$(CC) $(CFLAGS) -o $(OBJS_SO_LONG) $(MFLAGS) $(NAME_MLX) -o $(NAME)
-
-$(DIR_OBJS_SO_LONG)%.o: %.c $(SO_LONG_HEADERS) Makefile
-	mkdir -p $(DIR_OBJS_SO_LONG)/$(dir $<)
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_HEADERS)
-	@$(CC) $(CFLAGS) -I mlx -c $< -o $@ -I $(DIR_HEADERS)
-# $(DIR_OBJS):
-# 	mkdir -p $(DIR_OBJS_SO_LONG)
-
-libft: FORCE
-	@make -C Libft
-
-ftprintf: FORCE
-	@make -C ft_printf
-
-mlx: FORCE
-	@make -C mlx
-
-FORCE:
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-#-----------------------------------------------------------------#
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINT) $(MLXFLAGS) $(MLX) -o $(NAME)
+	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)/parsing $(OBJ_DIR)/game
+	@$(CC) $(CFLAGS) -I mlx -c $< -o $@
+
+# norm:
+# 	@if ! norminette ./game ./parsing ./libft ./ft_printf | grep -v "OK" > /dev/null; then \
+# 		echo "\033[1;32mNorminette valide ! ✔️\033[0m"; \
+# 	else \
+# 		norminette ./game ./parsing ./libft ./ft_printf | grep -v "OK" | grep --color=always "Error"; \
+# 	fi
 
 clean:
-	@rm -rf $(DIR_OBJS_SO_LONG) $(OBJS) 
-	@make clean -C Libft
-	@make clean -C ft_printf
-	@make clean -C mlx
+	@echo "\033[1;33mSuppression des fichiers objets... \033[0m🗑"
+		@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@rm -rf $(NAME)
-	@make fclean -C Libft
-	@make fclean -C ft_printf
-	@make clean -C mlx
-	
-re:  clean fclean 
-	@$(MAKE) all
+	@echo "\033[1;33mSuppression du programme final... \033[0m🗑"
+	@rm -f $(NAME)
+
+re: fclean all

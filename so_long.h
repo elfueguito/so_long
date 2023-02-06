@@ -21,9 +21,11 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <fcntl.h>
-# include "Libft/libft.h"
+# include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
-# include "mlx/mlx.h"
+# include "mlx_linux/mlx.h"
+
+# include <stdio.h>
 
 typedef struct s_map
 {

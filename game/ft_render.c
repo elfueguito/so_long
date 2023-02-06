@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -22,11 +22,12 @@ void my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int ft_close(int keycode, t_data *img)
 {
-	if (keycode == 53)
+	if (keycode == 65307)
 	{
 		mlx_destroy_window(img->mlx, img->mlx_win);
 		exit (0);
 	}
+	printf("%d\n", keycode);
 	return (0);
 }
 
@@ -80,7 +81,7 @@ int main (void)
 		my_mlx_pixel_put(&img, i, i, 0x00FF0000);
 		i++;
 	}
-	while (i <= 700 & j >= 500)
+	while (i <= 700 && j >= 500)
 	{
 		my_mlx_pixel_put(&img, i, j, 0x00FF0000);
 		i++;
