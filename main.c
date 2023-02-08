@@ -1,72 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_render.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbacquet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 17:13:00 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/01/30 15:54:26 by cbacquet         ###   ########.fr       */
+/*   Created: 2023/02/07 14:29:25 by cbacquet          #+#    #+#             */
+/*   Updated: 2023/02/07 14:29:32 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-
-int ft_close(int keycode, t_mlx_prog *window)
-{
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(window->mlx, window->window);
-		exit (0);
-	}
-	printf("%d\n", keycode);
-	return (0);
-}
-
-int ft_close_mouse(void)
-{
-	exit(0);
-}
+#include "./so_long.h"
 /*
-int	ft_move(int keycode, t_data *img)
+void my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	int	i;
-	int	j;
+	char	*dst;
 	
-	i = 500;
-	j = 500;
-	my_mlx_pixel_put(img, i, j, 0x00FF0000);
-	if (keycode == 13)
-	{
-		my_mlx_pixel_put(img, i - 1, j, 0x00FF0000);
-	}
-	if (keycode == 0)
-	{
-		my_mlx_pixel_put(img, i - 1, j, 0x00FF0000);
-	}	
-	if (keycode == 1)
-	{
-		my_mlx_pixel_put(img, i, j + 1, 0x00FF0000);
-	}
-	if (keycode == 2)
-	{
-		my_mlx_pixel_put(img, i + 1, j, 0x00FF0000);
-	}
-	return (0);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixels / 8));
+	*(unsigned int*)dst = color;
 }
 
 int main (void)
 {
 	t_data	img;
-	
 	int		i;
 	int		j;
+	char	*relative_path = "./space_background/background_1.xpm";
+	int		img_width;
+	int		img_height;
+
 	//t_vars	vars;
 	
 	i = 500;
 	j = 600;
+	img_width = 800;
+	img_height = 800;
 	img.mlx = mlx_init();
 	img.mlx_win = mlx_new_window(img.mlx, 1920, 1080, "Welcome in the game !");
+	img.img = mlx_xpm_file_to_image(img.mlx, relative_path, &img_width, &img_height);
 	img.img = mlx_new_image(img.mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixels, &img.line_length, &img.endian);
 	while (i <= 600)
@@ -95,3 +66,19 @@ int main (void)
 	mlx_loop(img.mlx);
 }
 */
+
+int main (int argc, char **argv)
+{
+	t_map	map;
+
+/*	if (argc == 2)
+	{
+		write(1, "Map Error", 10);
+		return (0);
+	}
+	map.file = argv[1];*/
+	ft_init_map(&map);
+	ft_game_init(&map);
+	ft_free(map.map);
+	return (0);
+}

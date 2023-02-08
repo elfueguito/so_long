@@ -14,7 +14,7 @@
 
 int ft_close(int keycode, t_data *img)
 {
-	if (keycode == 53)
+	if (keycode == 65307)
 	{
 		mlx_destroy_window(img->mlx, img->mlx_win);
 		exit (0);

@@ -12,14 +12,31 @@
 
 #include "../so_long.h"
 
-int	ft_quit(void)
+int ft_close(int keycode, t_mlx_prog *window)
 {
-	t_data	img;
-	
-	img.mlx = mlx_init();
-	//img.mlx_win = mlx_new_window(img.mlx, 1920, 1080, "Welcome in the game !");
-	mlx_hook(img.mlx_win, 2, 1L<<0, ft_close, &img);
-	mlx_hook(img.mlx_win, 17, 0, ft_close_mouse, 0);
-	mlx_loop(img.mlx);
+	if (keycode == 65307)
+	{
+		mlx_destroy_window(window->mlx, window->window.ptr_win);
+		exit (0);
+	}
+	printf("%d\n", keycode);
 	return (0);
+}
+
+int ft_close_mouse(void)
+{
+	exit(0);
+}
+
+t_window ft_new_window(void *mlx, int width, int height, char *name)
+{
+	t_window	window;
+	t_image		img;
+
+	window.ptr_win = mlx_new_window(mlx, width, height, name);
+	window.size.x = width;
+	window.size.y = height;
+	mlx_hook(window.ptr_win, 2, 1L<<0, ft_close, &img.ref);
+	mlx_hook(window.ptr_win, 17, 0, ft_close_mouse, 0);
+	return (window);
 }

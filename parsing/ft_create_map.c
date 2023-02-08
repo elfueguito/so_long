@@ -75,15 +75,14 @@ char	**ft_read_map(t_map *map)
 	
 	fd = open("maps/map_basic.ber", O_RDONLY);
 	map->height = ft_count_line(fd);
-	
 	close (fd);
 	fd = open("maps/map_basic.ber", O_RDONLY);
 	map->map = ft_fill_map(map->map, map->height, fd);
 	close(fd);
 	ft_map_is_valid(map->map, map->height);
-	ft_printf("\nmap valide : %d \n", ft_map_is_valid(map->map, map->height));
+	//ft_printf("\nmap valide : %d \n", ft_map_is_valid(map->map, map->height));
 	ft_check_item(map->map);
-	ft_printf("\nitems OK : %d\n\n", ft_check_item(map->map));
+	//ft_printf("\nitems OK : %d\n\n", ft_check_item(map->map));
 	
 	return (0);
 }

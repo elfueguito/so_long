@@ -30,12 +30,17 @@ MLX_A		= libmlx.a
 MLX_DIR 	= mlx/
 MLX			= $(addprefix $(MLX_DIR), $(MLX_A))
 
-SRC = $(SRC_DIR)/game/ft_render.c \
+SRC = $(SRC_DIR)/game/ft_quit.c \
+	  $(SRC_DIR)/game/ft_game_init.c \
+	  $(SRC_DIR)/game/ft_open_img.c \
+	  $(SRC_DIR)/parsing/ft_init_map.c \
       $(SRC_DIR)/parsing/ft_check_wall.c \
       $(SRC_DIR)/parsing/ft_check_item.c \
       $(SRC_DIR)/parsing/ft_create_map.c \
       $(SRC_DIR)/parsing/ft_map_info.c \
       $(SRC_DIR)/parsing/ft_way_is_ok.c \
+      $(SRC_DIR)/main.c \
+
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
