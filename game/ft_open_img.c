@@ -14,7 +14,7 @@
 
 int ft_sprite_back(t_sprite *sprite, t_mlx_prog *prog)
 {
-    sprite->back_00 = ft_new_sprite(prog->mlx, "../space_background/preview.xpm");
+    sprite->back_00 = ft_new_sprite(prog->mlx, "space_background/preview.xpm");
     return (0);
 }
 
@@ -23,8 +23,6 @@ t_image ft_new_sprite(void *mlx, char *path)
 {
     t_image	img;
 
-    img.size.x = 256;
-	img.size.y = 224;
 	img.ref = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
     img.addr = mlx_get_data_addr(img.ref, &img.bits_per_pixels, &img.line_length, &img.endian);
     return (img);

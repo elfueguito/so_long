@@ -19,7 +19,7 @@ int ft_close(int keycode, t_mlx_prog *window)
 		mlx_destroy_window(window->mlx, window->window.ptr_win);
 		exit (0);
 	}
-	printf("%d\n", keycode);
+	//printf("%d\n", keycode);
 	return (0);
 }
 
