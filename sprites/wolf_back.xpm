@@ -1,0 +1,26 @@
+/* XPM */
+static char *wolf_back1676045639[] = {
+/* columns rows colors chars-per-pixel */
+"15 15 5 1 ",
+"  c None",
+". c black",
+"X c #3A4466",
+"o c #5A6988",
+"O c #8B9BB4",
+/* pixels */
+" ...      ...  ",
+" .XX......XX.  ",
+" .XXXX..XXXX.  ",
+" .X.X....X.X.  ",
+"  .XX.XX.XX.   ",
+"  .XooXXooX.   ",
+" ..oooXXooo..  ",
+" .XooXoo.ooX.  ",
+" .oXXXXo.XXo.  ",
+" .ooo.oo.ooo.  ",
+" .XOo.oX.oOX.  ",
+"  .o..oX..o.   ",
+"  .oo.Xo.oo.   ",
+"  .Oo....oO.   ",
+"  .O.o..o.O.   "
+};

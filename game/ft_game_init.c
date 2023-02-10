@@ -14,18 +14,12 @@
 
 int ft_map_start(t_mlx_prog *prog, t_map *map)
 {
-    
-
-    while (prog->sprite.pos.y != prog->window.size.y)
-    {
-        while (prog->sprite.pos.x != prog->window.size.x)
-        {
-            ft_sprite_back(&prog->sprite, prog);
-	        mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, prog->sprite.back_00.ref, prog->sprite.pos.x, prog->sprite.pos.y);
-            prog->sprite.pos.x++;
-        }
-        prog->sprite.pos.y++;
-    }
+    prog->sprite.pos.x = 0;
+    prog->sprite.pos.y = 0;
+    ft_sprite(&prog->sprite, prog);
+	ft_put_wall(t_mlx_prog *p, t_sprite *s, t_map **map);
+	ft_put_floor(t_mlx_prog *p, t_sprite *s, t_map **map);
+	//mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, prog->sprite.floor_snow.ref, prog->sprite.pos.x, prog->sprite.pos.y);
     return (0);
 }
 

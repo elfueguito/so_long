@@ -33,6 +33,7 @@ MLX			= $(addprefix $(MLX_DIR), $(MLX_A))
 SRC = $(SRC_DIR)/game/ft_quit.c \
 	  $(SRC_DIR)/game/ft_game_init.c \
 	  $(SRC_DIR)/game/ft_open_img.c \
+	  $(SRC_DIR)/game/ft_put_sprite.c \
 	  $(SRC_DIR)/parsing/ft_init_map.c \
       $(SRC_DIR)/parsing/ft_check_wall.c \
       $(SRC_DIR)/parsing/ft_check_item.c \

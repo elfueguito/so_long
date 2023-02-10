@@ -72,7 +72,13 @@ typedef struct s_window
 
 typedef struct s_sprite
 {
-	t_image		back_00;
+	t_image		floor_snow;
+	t_image		wall;
+	t_image		wolf_face;
+	t_image		wolf_left;
+	t_image		wolf_right;
+	t_image		wolf_back;
+	t_image		tree;
 	t_position	pos;
 
 }	t_sprite;
@@ -118,8 +124,10 @@ int		ft_close_mouse(void);
 void    ft_init_map(t_map *map);
 int		ft_game_init(t_map *map);
 void    *ft_free(char **map);
-int		ft_sprite_back(t_sprite *sprite, t_mlx_prog *prog);
+int		ft_sprite(t_sprite *sprite, t_mlx_prog *prog);
 int		ft_map_start(t_mlx_prog *prog, t_map *map);
+int		ft_put_wall(t_mlx_prog *p, t_sprite *s, char **map, t_mlx_prog *prog);
+int		ft_put_floor(t_mlx_prog *p, t_sprite *s, char **map, t_mlx_prog *prog);
 int		main(int argc, char **argv);
 
 # endif

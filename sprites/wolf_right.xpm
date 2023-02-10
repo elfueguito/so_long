@@ -1,0 +1,27 @@
+/* XPM */
+static char *wolf_right1676045708[] = {
+/* columns rows colors chars-per-pixel */
+"15 15 6 1 ",
+"  c None",
+". c black",
+"X c #3A4466",
+"o c #5A6988",
+"O c #8B9BB4",
+"+ c white",
+/* pixels */
+"        ..   ..",
+"       .X....X.",
+"      .o..XXX..",
+"     .Xo.oXXXo.",
+"     .XXooo.XX.",
+"    ..XX.+..X..",
+" ...X..OO..oooX",
+".X.XXoXXOOOOO..",
+"oXoXooXOOooOOo.",
+"XoooXooXoo.....",
+".oXoo.XoXoo.X. ",
+"..O.o.oXXOoX.  ",
+".oO...Oo.O.o.  ",
+".oo...oO..o.   ",
+".o..o..O..o.   "
+};
