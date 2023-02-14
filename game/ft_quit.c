@@ -12,11 +12,11 @@
 
 #include "../so_long.h"
 
-int ft_close(int keycode, t_mlx_prog *window)
+int ft_close(int keycode, t_data *data)
 {
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(window->mlx, window->window.ptr_win);
+		mlx_destroy_window(data->mlx, data->window->ptr_win);
 		exit (0);
 	}
 	//printf("%d\n", keycode);
@@ -26,17 +26,4 @@ int ft_close(int keycode, t_mlx_prog *window)
 int ft_close_mouse(void)
 {
 	exit(0);
-}
-
-t_window ft_new_window(void *mlx, int width, int height, char *name)
-{
-	t_window	window;
-	t_image		img;
-
-	window.ptr_win = mlx_new_window(mlx, width, height, name);
-	window.size.x = width;
-	window.size.y = height;
-	mlx_hook(window.ptr_win, 2, 1L<<0, ft_close, &img.ref);
-	mlx_hook(window.ptr_win, 17, 0, ft_close_mouse, 0);
-	return (window);
 }

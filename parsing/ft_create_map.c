@@ -56,14 +56,13 @@ char	**ft_fill_map(char **map, int nb_line, int fd)
 	int i;
 	
 	i = 0;
-	map = malloc(sizeof(char *) * nb_line + 1);
+	map = malloc(sizeof(char *) * (nb_line + 1));
 	if(!map)
 		return (free(map), NULL);
 	map[nb_line] = NULL;
-	while(nb_line > 0)
+	while(i < nb_line)
 	{
 		map[i] = get_next_line(fd);
-		nb_line--;
 		i++;
 	}
 	return(map);

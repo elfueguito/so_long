@@ -17,4 +17,7 @@ void    ft_init_map(t_map *map)
     ft_read_map(map);
     ft_map_info(map);
     ft_way_is_ok(map->count_obj, map->start_x, map->start_y, map);
+    ft_free(map->map);
+    ft_read_map(map);
+    ft_map_info(map);
 }

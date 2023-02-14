@@ -94,6 +94,12 @@ typedef struct s_mlx_prog
 
 }	t_mlx_prog;
 
+typedef struct s_data
+{
+	void		*mlx;
+	t_window	*window;
+}	t_data;
+
 
 t_window	ft_new_window(void *mlx, int width, int height, char *name);
 t_image		ft_new_sprite(void *mlx, char *path);
@@ -119,15 +125,22 @@ int		ft_P_y(char **map);
 int		ft_E_x(char **map);
 int		ft_E_y(char **map);
 int		ft_way_is_ok(int cpt, int x, int y, t_map *map);
-int 	ft_close(int keycode, t_mlx_prog *window);
+int 	ft_close(int keycode, t_data *data);
 int		ft_close_mouse(void);
 void    ft_init_map(t_map *map);
 int		ft_game_init(t_map *map);
 void    *ft_free(char **map);
 int		ft_sprite(t_sprite *sprite, t_mlx_prog *prog);
 int		ft_map_start(t_mlx_prog *prog, t_map *map);
-int		ft_put_wall(t_mlx_prog *p, t_sprite *s, char **map, t_mlx_prog *prog);
-int		ft_put_floor(t_mlx_prog *p, t_sprite *s, char **map, t_mlx_prog *prog);
+int		ft_sprite_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map);
+int		ft_sprite_map_object(t_mlx_prog *prog, t_sprite *sprite, t_map *map);
+int		ft_put_wall(t_mlx_prog *p, t_sprite *s);
+int		ft_put_floor(t_mlx_prog *p, t_sprite *s);
+int		ft_put_exit(t_mlx_prog *p, t_sprite *s);
+int		ft_print_exit(t_mlx_prog *p, t_sprite *s, char **map, t_position pos);
+int		ft_wall_or_floor(t_mlx_prog *p, t_sprite *s, char **map, t_position pos);
+int 	ft_print_object(t_mlx_prog *p, t_sprite *s, char **map, t_position	pos);
+int		ft_put_object(t_mlx_prog *p, t_sprite *s);
 int		main(int argc, char **argv);
 
 # endif

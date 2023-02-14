@@ -67,6 +67,25 @@ int main (void)
 }
 */
 
+/*void print_map(char **map)
+{
+	int x;
+	int y;
+	
+	y = 0;
+	while(map[y])
+	{
+		x = 0;
+		while(map[y][x])
+		{
+			printf("%c", map[y][x]);
+			x++;
+		}
+		printf("\n");
+		y++;
+	}
+}
+*/
 int main (int argc, char **argv)
 {
 	t_map	map;
@@ -78,6 +97,7 @@ int main (int argc, char **argv)
 	}
 	map.file = argv[1];*/
 	ft_init_map(&map);
+	//print_map(map.map);
 	ft_game_init(&map);
 	ft_free(map.map);
 	return (0);

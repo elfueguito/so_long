@@ -15,12 +15,12 @@
 int ft_sprite(t_sprite *sprite, t_mlx_prog *prog)
 {
     sprite->floor_snow = ft_new_sprite(prog->mlx, "sprites/floor_snow.xpm");
- /*   sprite->wall = ft_new_sprite(prog->mlx, "sprites/wall.xpm");
+    sprite->wall = ft_new_sprite(prog->mlx, "sprites/wall.xpm");
     sprite->tree = ft_new_sprite(prog->mlx, "sprites/tree.xpm");
     sprite->wolf_face = ft_new_sprite(prog->mlx, "sprites/wolf_face.xpm");
     sprite->wolf_left = ft_new_sprite(prog->mlx, "sprites/wolf_left.xpm");
     sprite->wolf_right = ft_new_sprite(prog->mlx, "sprites/wolf_right.xpm");
-    sprite->wolf_back = ft_new_sprite(prog->mlx, "sprites/wolf_back.xpm");*/
+    sprite->wolf_back = ft_new_sprite(prog->mlx, "sprites/wolf_back.xpm");
     return (0);
 }
 
@@ -28,7 +28,7 @@ t_image ft_new_sprite(void *mlx, char *path)
 {
     t_image	img;
 
-	img.ref = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
+    img.ref = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
     img.addr = mlx_get_data_addr(img.ref, &img.bits_per_pixels, &img.line_length, &img.endian);
     return (img);
 }
