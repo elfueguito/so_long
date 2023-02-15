@@ -63,6 +63,7 @@ int ft_print_exit(t_mlx_prog *p, t_sprite *s, char **map, t_position pos)
 	return (0);
 }
 
+
 int	ft_wall_or_floor(t_mlx_prog *p, t_sprite *s, char **map, t_position	pos)
 {
 	if (map[pos.y][pos.x] == '1')

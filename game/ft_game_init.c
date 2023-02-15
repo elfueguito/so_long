@@ -19,8 +19,8 @@ int ft_map_start(t_mlx_prog *prog, t_map *map)
     //prog->sprite.pos.y = 0;
     ft_sprite(&prog->sprite, prog);
     ft_sprite_map(prog, &prog->sprite, map);
+	mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, prog->sprite.player.ref, prog->sprite.pos.x, prog->sprite.pos.y);
     //ft_sprite_map_object(prog, &prog->sprite, map);
-	//mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, prog->sprite.floor_snow.ref, prog->sprite.pos.x, prog->sprite.pos.y);
     return (0);
 }
 
