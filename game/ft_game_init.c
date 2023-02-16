@@ -51,13 +51,16 @@ int ft_game_init(t_map *map)
     prog.mlx = mlx_init();
     //prog.window = ft_new_window(prog.mlx, map->width * 64, map->height *64, "Welcome in the game !");
     data.mlx = prog.mlx;
-	prog.window.ptr_win = mlx_new_window(prog.mlx, map->width * 64, map->height * 64, "Welcome in the game !");
+	prog.window.ptr_win = mlx_new_window(prog.mlx, map->width * 50, map->height * 50, "Welcome in the game !");
+    ft_map_start(&prog, map);
 	prog.window.size.x = map->width;
 	prog.window.size.y = map->height;
 	data.window = &prog.window;
 	mlx_hook(prog.window.ptr_win, 2, 1L<<0, ft_close, &data);
 	mlx_hook(prog.window.ptr_win, 17, 0, ft_close_mouse, 0);
-    ft_map_start(&prog, map);
+    mlx_hook(prog.window.ptr_win, 2, 1L<<0, ft_key_pressed, &prog);
+    mlx_hook(prog.window.ptr_win, 3, 1L<<1, ft_key_released, &prog);
+    mlx_loop_hook(prog.mlx, ft_move_sprite_player, &prog);
     mlx_loop(prog.mlx);
     return (0);
 }

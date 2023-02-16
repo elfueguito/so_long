@@ -10,7 +10,167 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_move()
+#include "../so_long.h"
+
+int	ft_check_right(void *param)
 {
-	
+	t_mlx_prog	*prog;
+	int 		i;
+
+	prog = (t_mlx_prog *)param;
+	i = 0;
+	while (i < 38)
+	{
+		if (prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 28) / 50] == '1' && prog->player.dir_x == 1)
+			return (0);
+		if (prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 13) / 50] == 'C' && prog->player.dir_x == 1)
+		{
+			prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 13) / 50] == '0';
+			return (1);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	ft_check_left(void *param)
+{
+	t_mlx_prog	*prog;
+	int 		i;
+
+	prog = (t_mlx_prog *)param;
+	i = 0;
+	while (i < 38)
+	{
+		if (prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x - 28) / 50] == '1' && prog->player.dir_x == -1)
+			return (0);
+		if (prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x) / 50] == 'C' && prog->player.dir_x == -1)
+		{
+			prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x) / 50] == '0';
+			return (1);
+		}
+		i++;
+	}
+	return (1);
+
+}
+
+int ft_check_up(void *param)
+{
+	t_mlx_prog	*prog;
+	int 		i;
+
+	prog = (t_mlx_prog *)param;
+	i = 0;
+	while (i < 28)
+	{
+		if (prog->map[(prog->player.pos.y - 3) / 50][(prog->player.pos.x + i) / 50 ] == '1' && prog->player.dir_y == -1)
+			return (0);
+		if (prog->map[(prog->player.pos.y - 15) / 50][(prog->player.pos.x + i) / 50] == 'C' && prog->player.dir_y == -1)
+		{
+			prog->map[(prog->player.pos.y - 15) / 50][(prog->player.pos.x + i) / 50] == '0';
+			return (1);
+		}
+		i++;
+	}
+	return (1);
+
+}
+
+int ft_check_down(void *param)
+{
+	t_mlx_prog	*prog;
+	int			i;
+
+	prog = (t_mlx_prog *)param;
+	i = 0;
+	while (i < 28)
+	{
+		if (prog->map[(prog->player.pos.y + 3) / 50][(prog->player.pos.x + i) / 50] == '1' && prog->player.dir_y == 1)
+			return (0);
+		if (prog->map[(prog->player.pos.y + 15) / 50][(prog->player.pos.x + i) / 50] == 'C' && prog->player.dir_y == 1)
+		{
+			prog->map[(prog->player.pos.y + 15) / 50][(prog->player.pos.x + i) / 50] == '0';
+			return (1);
+		}
+		i++;
+	}
+	return (1);
+}
+
+/*int ft_move(int key, void *param)
+{
+	t_mlx prog	*prog;
+
+	if (key == 100) //go right
+		prog->player.pos.x += prog->player.pos.x;
+
+	if (key == 97) //go left
+		prog->player.pos.x -= prog->player.pos.x;
+	if (key == 115) //go down
+		prog->player.pos.y += prog->player.pos.y;
+	if (key == 119) //go up
+		prog->player.pos.y -= prog->player.pos.y;	
+	return (0);
+}
+*/
+
+int	ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map)
+{
+	static int	i;
+
+	i = 0;
+	if (!ft_check_right(prog))
+		prog->player.dir_x = 0;
+	if (!ft_check_left(prog))
+		prog->player.dir_x = 0;
+	if (!ft_check_down(prog))
+		prog->player.dir_y = 0;
+	if (!ft_check_up(prog))
+		prog->player.dir_y = 0;
+	else
+	{
+		prog->player.pos.x += prog->player.dir_x;
+		prog->player.pos.y += prog->player.dir_y;
+	}
+	if (prog->player.dir_x != 0 || prog->player.dir_y != 0)
+	{
+		i++;
+		ft_printf("%d\n", i);
+		ft_reload_map(prog, &prog->sprite, map);
+		mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, s->player.ref, prog->sprite_position.x, prog->sprite_position.y);
+	}
+
+}
+
+int ft_key_pressed(int key, void *param)
+{
+	t_mlx_prog	*prog;
+
+	prog = (t_mlx_prog *)param;
+	if (key == 100) /*go right*/
+		prog->player.dir_x = 1;
+	if (key == 97) /*go left*/
+		prog->player.dir_x = -1;
+	if (key == 115) /*go down*/
+		prog->player.dir_y = 1;
+	if (key == 119) /*go up*/
+		prog->player.dir_y = -1;	
+	return (0);
+}
+
+int ft_key_released(int key, void * param)
+{
+	t_mlx_prog	*prog;
+
+	prog = (t_mlx_prog *)param;
+	if (key == 100) /*go right*/
+		prog->player.dir_x = 0;
+	if (key == 97) /*go left*/
+		prog->player.dir_x = 0;
+	if (key == 115) /*go down*/
+		prog->player.dir_y = 0;
+	if (key == 119) /*go up*/
+		prog->player.dir_y = 0;	
+	return (0);
 }

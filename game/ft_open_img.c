@@ -16,11 +16,12 @@ int ft_sprite(t_sprite *sprite, t_mlx_prog *prog)
 {
     sprite->floor_snow = ft_new_sprite(prog->mlx, "sprites/floor_snow.xpm");
     sprite->wall = ft_new_sprite(prog->mlx, "sprites/wall.xpm");
-    sprite->tree = ft_new_sprite(prog->mlx, "sprites/tree.xpm");
-    sprite->wolf_face = ft_new_sprite(prog->mlx, "sprites/wolf_face.xpm");
-    sprite->wolf_left = ft_new_sprite(prog->mlx, "sprites/wolf_left.xpm");
-    sprite->wolf_right = ft_new_sprite(prog->mlx, "sprites/wolf_right.xpm");
-    sprite->wolf_back = ft_new_sprite(prog->mlx, "sprites/wolf_back.xpm");
+    sprite->mushroom = ft_new_sprite(prog->mlx, "sprites/mushroom.xpm");
+    sprite->player = ft_new_sprite(prog->mlx, "sprites/player.xpm");
+    sprite->exit = ft_new_sprite(prog->mlx, "sprites/exit.xpm");
+    //sprite->wolf_left = ft_new_sprite(prog->mlx, "sprites/wolf_left.xpm");
+    //sprite->wolf_right = ft_new_sprite(prog->mlx, "sprites/wolf_right.xpm");
+    //sprite->wolf_back = ft_new_sprite(prog->mlx, "sprites/wolf_back.xpm");
     return (0);
 }
 

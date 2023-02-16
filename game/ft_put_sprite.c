@@ -39,15 +39,17 @@ int ft_put_floor(t_mlx_prog *p, t_sprite *s)
 
 int	ft_put_object(t_mlx_prog *p, t_sprite *s)
 {
-	mlx_put_image_to_window(p->mlx, p->window.ptr_win, s->tree.ref, p->sprite_position.x, p->sprite_position.y);
+	mlx_put_image_to_window(p->mlx, p->window.ptr_win, s->mushroom.ref, p->sprite_position.x, p->sprite_position.y);
 	return (0);
 }
 
 int	ft_put_exit(t_mlx_prog *p, t_sprite *s)
 {
-	mlx_put_image_to_window(p->mlx, p->window.ptr_win, s->wolf_back.ref, p->sprite_position.x, p->sprite_position.y);
+	mlx_put_image_to_window(p->mlx, p->window.ptr_win, s->exit.ref, p->sprite_position.x, p->sprite_position.y);
 	return (0);
 }
+
+
 
 int ft_print_object(t_mlx_prog *p, t_sprite *s, char **map, t_position pos)
 {
@@ -62,7 +64,6 @@ int ft_print_exit(t_mlx_prog *p, t_sprite *s, char **map, t_position pos)
 		ft_put_exit(p, s);
 	return (0);
 }
-
 
 int	ft_wall_or_floor(t_mlx_prog *p, t_sprite *s, char **map, t_position	pos)
 {
