@@ -12,20 +12,20 @@
 
 #include "../so_long.h"
 
-int	ft_check_right(void *param)
+/*int	ft_check_right(void *param)
 {
 	t_mlx_prog	*prog;
 	int 		i;
 
 	prog = (t_mlx_prog *)param;
 	i = 0;
-	while (i < 38)
+	while (i < 29)
 	{
-		if (prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 28) / 50] == '1' && prog->player.dir_x == 1)
+		if (prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 21) / 50] == '1' && prog->player.dir_x == 1)
 			return (0);
-		if (prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 13) / 50] == 'C' && prog->player.dir_x == 1)
+		if (prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 10) / 50] == 'C' && prog->player.dir_x == 1)
 		{
-			prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 13) / 50] == '0';
+			prog->map[(prog->player.pos.y + i) / 50][(prog->player.pos.x + 10) / 50] == '0';
 			return (1);
 		}
 		i++;
@@ -98,13 +98,12 @@ int ft_check_down(void *param)
 	return (1);
 }
 
-/*int ft_move(int key, void *param)
+int ft_move(int key, void *param)
 {
 	t_mlx prog	*prog;
 
 	if (key == 100) //go right
 		prog->player.pos.x += prog->player.pos.x;
-
 	if (key == 97) //go left
 		prog->player.pos.x -= prog->player.pos.x;
 	if (key == 115) //go down
@@ -113,7 +112,7 @@ int ft_check_down(void *param)
 		prog->player.pos.y -= prog->player.pos.y;	
 	return (0);
 }
-*/
+
 
 int	ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map)
 {
@@ -142,35 +141,64 @@ int	ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map)
 	}
 
 }
-
-int ft_key_pressed(int key, void *param)
+*/
+int	ft_move_up(int key, t_mlx_prog *prog, t_sprite *s, t_map *map, t_position pos)
 {
-	t_mlx_prog	*prog;
-
-	prog = (t_mlx_prog *)param;
-	if (key == 100) /*go right*/
-		prog->player.dir_x = 1;
-	if (key == 97) /*go left*/
-		prog->player.dir_x = -1;
-	if (key == 115) /*go down*/
-		prog->player.dir_y = 1;
-	if (key == 119) /*go up*/
-		prog->player.dir_y = -1;	
-	return (0);
+	//ft_printf("%d\n", key);
+	//prog->player_pos.x = ;
+	//prog->player_pos.y = ;
+	if (key == 119)
+	{
+		//prog->sprite_position.y -= 50;
+		prog->player.pos.y = prog->player.pos.y - 50;
+		ft_reload_map(prog, &prog->sprite, map);
+		mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, s->player.ref, prog->sprite_position.x, prog->sprite_position.y);
+		//ft_printf("x=%d et y=%d\n", prog->player.pos.x, prog->player.pos.y);
+		//map->map[pos.y][pos.x] = 'P'; 
+		//map->map[(pos.y) + 1][pos.x] = '0';
+		ft_printf("reload\n");
+		//ft_reload_map(prog, &prog->sprite, map);
+		//ft_put_player(prog, s);
+		//ft_print_player(prog, s, map->map, pos);
+		return (0);	
+	}
 }
 
+
+int ft_key_pressed(int key, t_mlx_prog	*prog)
+{
+	//t_mlx_prog	*prog;
+
+	//prog = (t_mlx_prog *)param;
+	if (key == 100) //go right
+		return (1);
+		//prog->player.dir_x = 1;
+	if (key == 97) //go left
+		return (1);
+		//prog->player.dir_x = -1;
+	if (key == 115) //go down
+		return (1);
+		//prog->player.dir_y = 1;
+	if (key == 119) //go up
+		return (1);
+		//prog->player.dir_y = -1;	
+	return (0);
+}
+/*
 int ft_key_released(int key, void * param)
 {
 	t_mlx_prog	*prog;
 
 	prog = (t_mlx_prog *)param;
-	if (key == 100) /*go right*/
+	if (key == 100) //go right
 		prog->player.dir_x = 0;
-	if (key == 97) /*go left*/
+	if (key == 97) //go left
 		prog->player.dir_x = 0;
-	if (key == 115) /*go down*/
+	if (key == 115) //go down
 		prog->player.dir_y = 0;
-	if (key == 119) /*go up*/
+	if (key == 119) //go up
 		prog->player.dir_y = 0;	
 	return (0);
 }
+
+*/

@@ -27,6 +27,7 @@ int	ft_sprite_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map)
 			ft_wall_or_floor(prog, sprite, map->map, pos);
 			ft_print_object(prog, sprite, map->map, pos);
 			ft_print_exit(prog, sprite, map->map, pos);
+			//ft_print_player(prog, sprite, map->map, pos);
 			pos.x++;
 		}
 		pos.y++;
@@ -61,6 +62,7 @@ int	ft_reload_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map)
 		pos.y++;
 		ft_print_object(prog, sprite, map->map, pos);
 		ft_print_exit(prog, sprite, map->map, pos);
+		//ft_print_player(prog, sprite, map->map, pos);
 	}
 	return (0);
 }

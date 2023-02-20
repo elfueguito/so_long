@@ -77,8 +77,6 @@ typedef struct s_sprite
 	t_image		player;
 	t_image		exit;
 	t_image		mushroom;
-	t_image		wolf_left;
-	t_image		wolf_right;
 	t_position	pos;
 
 }	t_sprite;
@@ -99,6 +97,7 @@ typedef struct s_mlx_prog
 	t_image		img;
 	t_window	window;
 	t_position	sprite_position;
+	t_position	player_pos;
 	t_sprite	sprite;
 	t_player	player;
 
@@ -150,13 +149,16 @@ int		ft_put_exit(t_mlx_prog *p, t_sprite *s);
 int		ft_print_exit(t_mlx_prog *p, t_sprite *s, char **map, t_position pos);
 int		ft_wall_or_floor(t_mlx_prog *p, t_sprite *s, char **map, t_position pos);
 int 	ft_print_object(t_mlx_prog *p, t_sprite *s, char **map, t_position	pos);
+int		ft_print_player(t_mlx_prog *p, t_sprite *s, char **map, t_position pos);
 int		ft_put_object(t_mlx_prog *p, t_sprite *s);
+int		ft_put_player (t_mlx_prog *p, t_sprite *s);
 int		ft_check_right(void *param);
 int		ft_check_left(void *param);
 int		ft_check_up(void *param);
 int		ft_check_down(void *param);
 int		ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map);
-int		ft_key_pressed(int key, void *param);
+int		ft_move_up(int key, t_mlx_prog *prog, t_sprite *s, t_map *map, t_position pos);
+int		ft_key_pressed(int key, t_mlx_prog	*prog);
 int		ft_key_released(int key, void * param);
 int		ft_reload_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map);
 int		main(int argc, char **argv);

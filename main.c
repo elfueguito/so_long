@@ -67,7 +67,7 @@ int main (void)
 }
 */
 
-/*void print_map(char **map)
+void print_map(char **map)
 {
 	int x;
 	int y;
@@ -85,7 +85,16 @@ int main (void)
 		y++;
 	}
 }
-*/
+
+/*
+		prog->player.pos.y = prog->player.pos.y - 1;
+		map->map[pos.y - 1][pos.x] = 'P';
+		map->map[pos.y][pos.x] = '0';
+		s->pos.x = prog->player.pos.x;
+		s->pos.y = prog->player.pos.y;
+		ft_print_player(prog, s, map->map, pos);	
+		//ft_reload_map(prog, &prog->sprite, map);*/
+
 int main (int argc, char **argv)
 {
 	t_map	map;
@@ -99,6 +108,7 @@ int main (int argc, char **argv)
 	ft_init_map(&map);
 	//print_map(map.map);
 	ft_game_init(&map);
+	//print_map(map.map);
 	ft_free(map.map);
 	return (0);
 }

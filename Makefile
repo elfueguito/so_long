@@ -7,7 +7,7 @@ CC = gcc
 ifeq ($(shell uname),Linux)
    # Linux-specific commands
 	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
-	CFLAGS = -Wextra -Werror -ggdb -g -fsanitize=address
+	CFLAGS = -Wextra -Werror -ggdb -g3 -fsanitize=address
 else
    # Mac OS X-specific commands
 	CFLAGS = -Wall -Wextra -Werror

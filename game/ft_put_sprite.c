@@ -49,12 +49,28 @@ int	ft_put_exit(t_mlx_prog *p, t_sprite *s)
 	return (0);
 }
 
+int	ft_put_player (t_mlx_prog *p, t_sprite *s)
+{
+    mlx_put_image_to_window(p->mlx, p->window.ptr_win, s->player.ref, p->sprite_position.x, p->sprite_position.y);
+	//ft_printf("x=%d et y=%d\n", p->sprite_position.x, p->sprite_position.y);
+	return (0);
+}
+
 
 
 int ft_print_object(t_mlx_prog *p, t_sprite *s, char **map, t_position pos)
 {
 	if (map[pos.y][pos.x] == 'C')
 		ft_put_object(p, s);
+	return (0);
+}
+
+int ft_print_player(t_mlx_prog *p, t_sprite *s, char **map, t_position pos)
+{
+	if (map[pos.y][pos.x] == 'P')
+	{
+		ft_put_player(p, s);
+	}
 	return (0);
 }
 
@@ -69,7 +85,7 @@ int	ft_wall_or_floor(t_mlx_prog *p, t_sprite *s, char **map, t_position	pos)
 {
 	if (map[pos.y][pos.x] == '1')
 		ft_put_wall(p, s);
-	if (map[pos.y][pos.x] != '1')
+	if (map[pos.y][pos.x] == '0')
 		ft_put_floor(p, s);
 	return (0);
 }
