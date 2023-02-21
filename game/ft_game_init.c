@@ -19,7 +19,7 @@ int ft_map_start(t_mlx_prog *prog, t_map *map)
     //prog->sprite.pos.y = 0;
     ft_sprite(&prog->sprite, prog);
     ft_sprite_map(prog, &prog->sprite, map);
-    mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, prog->sprite.player.ref, prog->player_pos.x, prog->player_pos.y);
+    //mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, prog->sprite.player.ref, prog->sprite_position.x, prog->sprite_position.y);
     //ft_print_player(prog, &prog->sprite, map->map, pos);
     //ft_sprite_map_object(prog, &prog->sprite, map);
     return (0);
@@ -61,7 +61,8 @@ int ft_game_init(t_map *map)
 	mlx_hook(prog.window.ptr_win, 17, 0, ft_close_mouse, 0);
     mlx_hook(prog.window.ptr_win, 2, 1L<<0, ft_move_up, &prog);
     //mlx_hook(prog.window.ptr_win, 3, 1L<<1, ft_key_released, &prog);
-    mlx_loop_hook(prog.mlx, ft_move_up, &prog);
+    mlx_loop_hook(prog.mlx, ft_reload_map, &prog);
+    ft_printf(" x : %d y ; %d\n", prog.pos_player.x, prog.pos_player.y);
     mlx_loop(prog.mlx);
     return (0);
 }

@@ -97,7 +97,7 @@ typedef struct s_mlx_prog
 	t_image		img;
 	t_window	window;
 	t_position	sprite_position;
-	t_position	player_pos;
+	t_position	pos_player;
 	t_sprite	sprite;
 	t_player	player;
 
@@ -157,7 +157,7 @@ int		ft_check_left(void *param);
 int		ft_check_up(void *param);
 int		ft_check_down(void *param);
 int		ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map);
-int		ft_move_up(int key, t_mlx_prog *prog, t_sprite *s, t_map *map, t_position pos);
+int		ft_move_up(t_mlx_prog *prog);
 int		ft_key_pressed(int key, t_mlx_prog	*prog);
 int		ft_key_released(int key, void * param);
 int		ft_reload_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map);

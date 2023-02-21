@@ -142,26 +142,31 @@ int	ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map)
 
 }
 */
-int	ft_move_up(int key, t_mlx_prog *prog, t_sprite *s, t_map *map, t_position pos)
+int	ft_move_up(t_mlx_prog *prog)
 {
 	//ft_printf("%d\n", key);
 	//prog->player_pos.x = ;
 	//prog->player_pos.y = ;
+	int	key;
+
+	key = 0;
 	if (key == 119)
 	{
 		//prog->sprite_position.y -= 50;
-		prog->player.pos.y = prog->player.pos.y - 50;
-		ft_reload_map(prog, &prog->sprite, map);
-		mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, s->player.ref, prog->sprite_position.x, prog->sprite_position.y);
+		
+		prog->pos_player.y -= 50;
+    	ft_printf(" x : %d y ; %d\n", prog->pos_player.x, prog->pos_player.y);
+		//ft_reload_map(prog, &prog->sprite, map);
+		//mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, s->player.ref, prog->sprite_position.x, prog->sprite_position.y);
 		//ft_printf("x=%d et y=%d\n", prog->player.pos.x, prog->player.pos.y);
 		//map->map[pos.y][pos.x] = 'P'; 
 		//map->map[(pos.y) + 1][pos.x] = '0';
-		ft_printf("reload\n");
 		//ft_reload_map(prog, &prog->sprite, map);
 		//ft_put_player(prog, s);
 		//ft_print_player(prog, s, map->map, pos);
-		return (0);	
+		return (1);	
 	}
+	return(0);
 }
 
 
