@@ -68,9 +68,7 @@ int ft_print_object(t_mlx_prog *p, t_sprite *s, char **map, t_position pos)
 int ft_print_player(t_mlx_prog *p, t_sprite *s, char **map, t_position pos)
 {
 	if (map[pos.y][pos.x] == 'P')
-	{
 		ft_put_player(p, s);
-	}
 	return (0);
 }
 

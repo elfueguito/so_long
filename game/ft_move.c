@@ -141,7 +141,7 @@ int	ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map)
 	}
 
 }
-*/
+
 int	ft_move_up(t_mlx_prog *prog)
 {
 	//ft_printf("%d\n", key);
@@ -189,7 +189,7 @@ int ft_key_pressed(int key, t_mlx_prog	*prog)
 		//prog->player.dir_y = -1;	
 	return (0);
 }
-/*
+
 int ft_key_released(int key, void * param)
 {
 	t_mlx_prog	*prog;
@@ -207,3 +207,100 @@ int ft_key_released(int key, void * param)
 }
 
 */
+int	ft_key_pressed(int key, void *param)
+{
+	t_mlx_prog	*p;
+
+	p = (t_mlx_prog *)param;
+	if (key == 65307)
+	{
+		mlx_destroy_window(p->mlx, p->window.ptr_win);
+		exit(0);
+	}
+	if (key == 100)
+	{
+		p->pos_player.x += 64;
+		p->dir.right = 1;
+
+	}
+	if (key == 119)
+	{
+		p->pos_player.y += -64;
+		p->dir.up = 1;
+	}
+	if (key == 115)
+	{
+		p->pos_player.y += 64;
+		p->dir.down = 1;
+	}
+	if (key == 97)
+	{
+		p->pos_player.x += -64;
+		p->dir.left = 1;
+	}
+	return (0);
+}
+
+int	ft_key_released(int key, void *param)
+{
+	t_mlx_prog	*p;
+
+	p = (t_mlx_prog *)param;
+	if (key == 100)
+		p->dir.right = 0;
+	if (key == 119)
+		p->dir.up = 0;
+	if (key == 115)
+		p->dir.down = 0;
+	if (key == 97)
+		p->dir.left = 0;
+	return (0);
+}
+
+/*int	ft_move_up(t_mlx_prog *prog)
+{
+	//ft_printf("%d\n", key);
+	//prog->player_pos.x = ;
+	//prog->player_pos.y = ;
+	int	key;
+
+	key = 0;
+	if (key == 119)
+	{
+		//prog->sprite_position.y -= 50;
+		
+		prog->pos_player.y -= 50;
+    	ft_printf(" x : %d y ; %d\n", prog->pos_player.x, prog->pos_player.y);
+		//ft_reload_map(prog, &prog->sprite, map);
+		//mlx_put_image_to_window(prog->mlx, prog->window.ptr_win, s->player.ref, prog->sprite_position.x, prog->sprite_position.y);
+		//ft_printf("x=%d et y=%d\n", prog->player.pos.x, prog->player.pos.y);
+		//map->map[pos.y][pos.x] = 'P'; 
+		//map->map[(pos.y) + 1][pos.x] = '0';
+		//ft_reload_map(prog, &prog->sprite, map);
+		//ft_put_player(prog, s);
+		//ft_print_player(prog, s, map->map, pos);
+		return (1);	
+	}
+	return(0);
+}
+
+
+int ft_key_pressed(int key, t_mlx_prog	*prog)
+{
+	//t_mlx_prog	*prog;
+
+	//prog = (t_mlx_prog *)param;
+	if (key == 100) //go right
+		return (1);
+		//prog->player.dir_x = 1;
+	if (key == 97) //go left
+		return (1);
+		//prog->player.dir_x = -1;
+	if (key == 115) //go down
+		return (1);
+		//prog->player.dir_y = 1;
+	if (key == 119) //go up
+		return (1);
+		//prog->player.dir_y = -1;	
+	return (0);
+}*/

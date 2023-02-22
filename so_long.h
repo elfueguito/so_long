@@ -90,6 +90,15 @@ typedef struct s_player
 
 }	t_player;
 
+typedef struct s_dir
+{
+	int	left;
+	int	right;
+	int	up;
+	int	down;
+
+}	t_dir;
+
 typedef struct s_mlx_prog
 {
 	void		*mlx;
@@ -98,6 +107,7 @@ typedef struct s_mlx_prog
 	t_window	window;
 	t_position	sprite_position;
 	t_position	pos_player;
+	t_dir		dir;
 	t_sprite	sprite;
 	t_player	player;
 
@@ -158,9 +168,9 @@ int		ft_check_up(void *param);
 int		ft_check_down(void *param);
 int		ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map);
 int		ft_move_up(t_mlx_prog *prog);
-int		ft_key_pressed(int key, t_mlx_prog	*prog);
+int		ft_key_pressed(int key, void *param);
 int		ft_key_released(int key, void * param);
-int		ft_reload_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map);
+int		ft_reload_map(void *param);
 int		main(int argc, char **argv);
 
 # endif
