@@ -36,6 +36,7 @@ SRC = $(SRC_DIR)/game/ft_quit.c \
 	  $(SRC_DIR)/game/ft_put_sprite.c \
 	  $(SRC_DIR)/game/ft_sprite_map.c \
 	  $(SRC_DIR)/game/ft_move.c \
+	  $(SRC_DIR)/game/ft_take_objects.c \
 	  $(SRC_DIR)/parsing/ft_init_map.c \
       $(SRC_DIR)/parsing/ft_check_wall.c \
       $(SRC_DIR)/parsing/ft_check_item.c \

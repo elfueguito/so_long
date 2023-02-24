@@ -104,6 +104,8 @@ int	ft_sprite_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map)
 
 int	ft_put_wolf(t_mlx_prog *p)
 {
+	t_position pos;
+	
 	if (p->dir.down == 1)
 		mlx_put_image_to_window(p->mlx, p->window.ptr_win,
 			p->sprite.player.ref, p->pos_player.x, p->pos_player.y);
@@ -127,10 +129,8 @@ int	ft_reload_map(void *param)
 
 	prog = (t_mlx_prog *)param;
 	pos.y = 0;
-	//temp_pos.x = prog->pos_player.x;
-	//temp_pos.y = prog->pos_player.y;
-	if (prog->pos_player.x != temp_pos.x
-		|| prog->pos_player.y != temp_pos.y)
+	if ((prog->pos_player.x != temp_pos.x
+		|| prog->pos_player.y != temp_pos.y))
 	{
 		while (prog->map[pos.y])
 		{
@@ -139,16 +139,17 @@ int	ft_reload_map(void *param)
 			{
 				prog->sprite_position.x = pos.x * 64;
 				prog->sprite_position.y = pos.y * 64;
-				ft_print_object(prog, &prog->sprite, prog->map, pos);
+				//ft_print_object(prog, &prog->sprite, prog->map, pos);
+				ft_take_object(prog);
 				ft_print_exit(prog, &prog->sprite, prog->map, pos);
-				if (prog->map[pos.y][pos.x] == '0' || prog->map[pos.y][pos.x] == 'P')
+				if (prog->map[pos.y][pos.x] == '0')
 					ft_put_floor(prog, &prog->sprite);
 				pos.x++;
 			}
 			pos.y++;
 		}
-		ft_put_wolf(prog);
 	}
+	ft_put_wolf(prog);
 	temp_pos.x = prog->pos_player.x;
 	temp_pos.y = prog->pos_player.y;
 	return (0);
