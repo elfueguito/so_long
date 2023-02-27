@@ -102,20 +102,20 @@ int	ft_sprite_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map)
 	return (0);
 }
 
-int	ft_put_wolf(t_mlx_prog *p)
+int	ft_put_wolf(t_mlx_prog *p, t_map *map)
 {
-	t_position pos;
+	t_position 	pos;
 	
-	if (p->dir.down == 1)
+	if (p->dir.down == 1 && !ft_take_object(p))
 		mlx_put_image_to_window(p->mlx, p->window.ptr_win,
 			p->sprite.player.ref, p->pos_player.x, p->pos_player.y);
-	if (p->dir.left == 1)
+	if (p->dir.left == 1 && !ft_take_object(p))
 		mlx_put_image_to_window(p->mlx, p->window.ptr_win,
 			p->sprite.player.ref, p->pos_player.x, p->pos_player.y);
-	if (p->dir.up == 1)
+	if (p->dir.up == 1 && !ft_take_object(p))
 		mlx_put_image_to_window(p->mlx, p->window.ptr_win,
 			p->sprite.player.ref, p->pos_player.x, p->pos_player.y);
-	if (p->dir.right == 1)
+	if (p->dir.right == 1 && !ft_take_object(p))
 		mlx_put_image_to_window(p->mlx, p->window.ptr_win,
 			p->sprite.player.ref, p->pos_player.x, p->pos_player.y);
 	return (0);
@@ -125,31 +125,34 @@ int	ft_reload_map(void *param)
 {
 	t_mlx_prog			*prog;
 	t_position			pos;
+	t_map				*map;
 	static t_position 	temp_pos;
 
 	prog = (t_mlx_prog *)param;
+	map = (t_map *)param;
 	pos.y = 0;
 	if ((prog->pos_player.x != temp_pos.x
 		|| prog->pos_player.y != temp_pos.y))
 	{
-		while (prog->map[pos.y])
+		while (prog->maps->map[pos.y])
 		{
 			pos.x = 0;
-			while (prog->map[pos.y][pos.x])
+			while (prog->maps->map[pos.y][pos.x])
 			{
 				prog->sprite_position.x = pos.x * 64;
 				prog->sprite_position.y = pos.y * 64;
 				//ft_print_object(prog, &prog->sprite, prog->map, pos);
 				ft_take_object(prog);
+				//ft_finish(prog, ft_take_object, prog->map);
 				ft_print_exit(prog, &prog->sprite, prog->map, pos);
-				if (prog->map[pos.y][pos.x] == '0')
+				if (prog->maps->map[pos.y][pos.x] == '0')
 					ft_put_floor(prog, &prog->sprite);
 				pos.x++;
 			}
 			pos.y++;
 		}
 	}
-	ft_put_wolf(prog);
+	ft_put_wolf(prog, map);
 	temp_pos.x = prog->pos_player.x;
 	temp_pos.y = prog->pos_player.y;
 	return (0);

@@ -99,7 +99,8 @@ int	ft_game_init(t_map *map)
 	t_data		data;
 	t_image		img;
 
-	prog.map = map->map;
+	prog.maps = map;
+	ft_printf("%d\n", prog.maps->count_obj);
 	prog.mlx = mlx_init();
 	data.mlx = prog.mlx;
 	prog.window.size.y = map->height;
@@ -109,8 +110,8 @@ int	ft_game_init(t_map *map)
 			map->height * 64, "Welcome in the game !");
 	ft_map_start(&prog, map);
 	mlx_hook(prog.window.ptr_win, 17, 0, ft_close_mouse, 0);
-	mlx_hook(prog.window.ptr_win, 2, 1L << 0, *ft_key_pressed, &prog);
-	mlx_hook(prog.window.ptr_win, 3, 1L << 1, *ft_key_released, &prog);
+	mlx_hook(prog.window.ptr_win, 2, 1L << 0, ft_key_pressed, &prog);
+	mlx_hook(prog.window.ptr_win, 3, 1L << 1, ft_key_released, &prog);
 	mlx_loop_hook(prog.mlx, ft_reload_map, &prog);
 	mlx_loop(prog.mlx);
 	return (0);

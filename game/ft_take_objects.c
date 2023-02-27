@@ -14,21 +14,31 @@
 
 int	ft_take_object(t_mlx_prog *prog)
 {
-	int	count;
-
-	count = prog->maps.count_obj;
-	while (count > 0)
+	ft_printf("%d\n", prog->maps->count_obj);
+	if (prog->maps->map[prog->pos_player.y][prog->pos_player.x] == 'C')
 	{
-		if (prog->map[prog->pos_player.y][prog->pos_player.x] == 'C')
-		{
-			ft_put_floor(prog, &prog->sprite);
-			count--;
-		}
+		ft_put_floor(prog, &prog->sprite);
+		prog->maps->count_obj--;
+		return (0);
 	}
-	if (count = 0 && prog->map[prog->pos_player.y][prog->pos_player.x] == 'E')
+	if (prog->maps->count_obj = 0 && prog->map[prog->pos_player.y][prog->pos_player.x] == 'E')
 	{
 		write (1, "Well Done", 10);
 		exit(0);
 	}
 	return (0);
 }
+
+/*int ft_finish(t_mlx_prog *prog, int count, char **map)
+{
+	t_position pos;
+
+	if (map[pos.y][pos.x] == 'E')
+		ft_put_exit(prog, &prog->sprite);
+	if (count = 0 && prog->map[prog->pos_player.y][prog->pos_player.x] == 'E')
+	{
+		write (1, "Well Done", 10);
+		exit(0);
+	}
+	return (0);
+}*/

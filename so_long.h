@@ -108,7 +108,7 @@ typedef struct s_mlx_prog
 	t_position	sprite_position;
 	t_position	pos_player;
 	t_dir		dir;
-	t_map		maps;
+	t_map		*maps;
 	t_sprite	sprite;
 	t_player	player;
 
@@ -167,12 +167,14 @@ int		ft_check_right(void *param);
 int		ft_check_left(void *param);
 int		ft_check_up(void *param);
 int		ft_check_down(void *param);
+int		ft_put_wolf(t_mlx_prog *p, t_map *map);
 int		ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map);
 int		ft_move_up(t_mlx_prog *prog);
 int		ft_key_pressed(int key, void *param);
 int		ft_key_released(int key, void * param);
 int		ft_reload_map(void *param);
 int		ft_take_object(t_mlx_prog *prog);
+int 	ft_finish(t_mlx_prog *prog, int count, char **map);
 int		main(int argc, char **argv);
 
 # endif

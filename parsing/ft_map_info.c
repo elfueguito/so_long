@@ -103,6 +103,7 @@ int ft_E_y(char **map)
 int	ft_map_info(t_map *map)
 {
 	map->count_obj = ft_count_obj(map->map);
+	ft_printf("%d\n", map->count_obj);
 	map->end_x = ft_E_x(map->map);
 	map->end_y = ft_E_y(map->map);
 	map->start_x = ft_P_x(map->map);
