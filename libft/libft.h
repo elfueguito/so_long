@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbacquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:54:47 by cbacquet          #+#    #+#             */
-/*   Updated: 2022/12/06 12:16:56 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:39:49 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*ft_strtrim(char const *s1, const char *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-char 	*get_line(int fd, char *line, char *buffer, int i);
+char	*get_line(int fd, char *line, char *buffer, int i);
 char	*get_next_line(int fd);
 
 #endif

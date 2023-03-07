@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_way_is_ok.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbacquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:52:14 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/01/24 13:52:24 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:34:07 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_way_is_ok(int cpt, int x, int y, t_map *map)
 {
 	int	found;
-	
+
 	if (cpt == map->f_count)
 		return (1);
 	if (map->map[y][x] == 'C' || map->map[y][x] == 'E')

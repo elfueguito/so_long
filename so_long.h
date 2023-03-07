@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbacquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:58:50 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/01/30 14:47:18 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:06:09 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct s_mlx_prog
 	t_window	window;
 	t_position	sprite_position;
 	t_position	pos_player;
+	t_position	pos_object;
 	t_dir		dir;
 	t_map		*maps;
 	t_sprite	sprite;
@@ -148,25 +149,29 @@ int		ft_way_is_ok(int cpt, int x, int y, t_map *map);
 int 	ft_close(int keycode, t_data *data);
 int		ft_close_mouse(void);
 void    ft_init_map(t_map *map);
+int		ft_init_sprite(t_mlx_prog *prog, t_sprite *sprite, t_map *map);
 int		ft_game_init(t_map *map);
 void    *ft_free(char **map);
 int		ft_sprite(t_sprite *sprite, t_mlx_prog *prog);
 int		ft_map_start(t_mlx_prog *prog, t_map *map);
-int		ft_sprite_map(t_mlx_prog *prog, t_sprite *sprite, t_map *map);
+int		ft_sprite_map(void *param);
 int		ft_sprite_map_object(t_mlx_prog *prog, t_sprite *sprite, t_map *map);
 int		ft_put_wall(t_mlx_prog *p, t_sprite *s);
 int		ft_put_floor(t_mlx_prog *p, t_sprite *s);
-int		ft_put_exit(t_mlx_prog *p, t_sprite *s);
+int		ft_put_first_exit(t_mlx_prog *p, t_sprite *s);
+int		ft_put_exit(t_mlx_prog *prog);
 int		ft_print_exit(t_mlx_prog *p, t_sprite *s, char **map, t_position pos);
 int		ft_wall_or_floor(t_mlx_prog *p, t_sprite *s, char **map, t_position pos);
 int 	ft_print_object(t_mlx_prog *p, t_sprite *s, char **map, t_position	pos);
 int		ft_print_player(t_mlx_prog *p, t_sprite *s, char **map, t_position pos);
 int		ft_put_object(t_mlx_prog *p, t_sprite *s);
 int		ft_put_player (t_mlx_prog *p, t_sprite *s);
+int		ft_put_objects(t_mlx_prog *prog);
 int		ft_check_right(void *param);
 int		ft_check_left(void *param);
 int		ft_check_up(void *param);
 int		ft_check_down(void *param);
+int		ft_check_all(t_mlx_prog *prog);
 int		ft_put_wolf(t_mlx_prog *p, t_map *map);
 int		ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map);
 int		ft_move_up(t_mlx_prog *prog);
@@ -174,7 +179,10 @@ int		ft_key_pressed(int key, void *param);
 int		ft_key_released(int key, void * param);
 int		ft_reload_map(void *param);
 int		ft_take_object(t_mlx_prog *prog);
-int 	ft_finish(t_mlx_prog *prog, int count, char **map);
+int		ft_obj_check(char **map);
+int		ft_finish(t_mlx_prog *prog);
+int		ft_update_map(t_mlx_prog *prog);
+int		ft_init_dir(t_mlx_prog *prog);
 int		main(int argc, char **argv);
 
 # endif

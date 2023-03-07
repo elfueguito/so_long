@@ -3,42 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_take_objects.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbacquet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:47:46 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/02/24 12:47:49 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:16:05 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_take_object(t_mlx_prog *prog)
+int	ft_obj_check(char **map)
 {
-	ft_printf("%d\n", prog->maps->count_obj);
-	if (prog->maps->map[prog->pos_player.y][prog->pos_player.x] == 'C')
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
 	{
-		ft_put_floor(prog, &prog->sprite);
-		prog->maps->count_obj--;
-		return (0);
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'C')
+				return (0);
+			x++;
+		}
+		y++;
 	}
-	if (prog->maps->count_obj = 0 && prog->map[prog->pos_player.y][prog->pos_player.x] == 'E')
+	return (1);
+}
+
+int	ft_finish(t_mlx_prog *prog)
+{
+	if (prog->maps->map[(prog->pos_player.y) / 64]
+		[(prog->pos_player.x) / 64] == 'E')
 	{
-		write (1, "Well Done", 10);
-		exit(0);
+		if (ft_obj_check(prog->maps->map))
+		{
+			write(1, "Well done", 9);
+			ft_free(prog->maps->map);
+			exit(0);
+		}
 	}
 	return (0);
 }
-
-/*int ft_finish(t_mlx_prog *prog, int count, char **map)
-{
-	t_position pos;
-
-	if (map[pos.y][pos.x] == 'E')
-		ft_put_exit(prog, &prog->sprite);
-	if (count = 0 && prog->map[prog->pos_player.y][prog->pos_player.x] == 'E')
-	{
-		write (1, "Well Done", 10);
-		exit(0);
-	}
-	return (0);
-}*/
