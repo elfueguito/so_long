@@ -6,7 +6,7 @@
 /*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:49:04 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/03/07 14:48:41 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/09 13:51:18 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_check_enter(char **map)
 	}
 	if (count_p > 1)
 		return (0);
-	return(1);
+	return (1);
 }
 
 int	ft_check_exit(char **map)
@@ -57,7 +57,7 @@ int	ft_check_exit(char **map)
 	}
 	if (count_e > 1)
 		return (0);
-	return(1);
+	return (1);
 }
 
 int	ft_count_obj(char **map)
@@ -96,5 +96,5 @@ int	ft_check_item(char **map)
 		if (ft_check_objects(map))
 			if (ft_check_exit(map))
 				return (1);
-	return(0);
+	return (0);
 }
