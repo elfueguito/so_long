@@ -6,7 +6,7 @@
 /*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:06:14 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/03/07 14:05:33 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:14:16 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,11 @@ int	ft_init_dir(t_mlx_prog *prog)
 	return (0);
 }
 
-int	ft_key_pressed(int key, void *param)
+int	ft_key_check(int key, void *param)
 {
 	t_mlx_prog	*p;
 
 	p = (t_mlx_prog *)param;
-	if (key == 65307)
-	{
-		mlx_destroy_window(p->mlx, p->window.ptr_win);
-		exit(0);
-	}
 	if (key == 100 && ft_check_right(p) != 0)
 	{
 		p->pos_player.x += 64;
@@ -51,6 +46,20 @@ int	ft_key_pressed(int key, void *param)
 		p->pos_player.x += -64;
 		p->dir.left = 1;
 	}
+	return (0);
+}
+
+int	ft_key_pressed(int key, void *param)
+{
+	t_mlx_prog	*p;
+
+	p = (t_mlx_prog *)param;
+	if (key == 65307)
+	{
+		mlx_destroy_window(p->mlx, p->window.ptr_win);
+		exit(0);
+	}
+	ft_key_check(key, p);
 	return (0);
 }
 
@@ -78,8 +87,8 @@ int	ft_check_all(t_mlx_prog *prog)
 
 	if (x != prog->pos_player.x || y != prog->pos_player.y)
 	{
+		ft_printf(" \r\033[2K %d ", i);
 		i++;
-		ft_printf("%d, ", i);
 		ft_update_map(prog);
 		ft_init_dir(prog);
 		mlx_put_image_to_window(prog->mlx, prog->window.ptr_win,

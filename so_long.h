@@ -6,7 +6,7 @@
 /*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:58:50 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/03/07 13:06:09 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:13:29 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ t_window	ft_new_window(void *mlx, int width, int height, char *name);
 t_image		ft_new_sprite(void *mlx, char *path);
 
 int		ft_map_is_rectangle(char **map);
-int		ft_map_is_valid(char **map, int nb_line);
+int		ft_map_is_valid(char **maps, int nb_line, t_map *map);
 int 	ft_count_line(int fd);
 char	**ft_fill_map(char **map, int nb_line, int fd);
 char	**ft_read_map(t_map *map);
@@ -176,6 +176,7 @@ int		ft_put_wolf(t_mlx_prog *p, t_map *map);
 int		ft_move_sprite_player(t_mlx_prog *prog, t_sprite *s, t_map *map);
 int		ft_move_up(t_mlx_prog *prog);
 int		ft_key_pressed(int key, void *param);
+int		ft_key_check(int key, void *param);
 int		ft_key_released(int key, void * param);
 int		ft_reload_map(void *param);
 int		ft_take_object(t_mlx_prog *prog);
@@ -183,6 +184,8 @@ int		ft_obj_check(char **map);
 int		ft_finish(t_mlx_prog *prog);
 int		ft_update_map(t_mlx_prog *prog);
 int		ft_init_dir(t_mlx_prog *prog);
+void	print_map(char **map);
+void	way_is_valid(t_map *map);
 int		main(int argc, char **argv);
 
 # endif

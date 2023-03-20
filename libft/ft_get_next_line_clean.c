@@ -6,7 +6,7 @@
 /*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:38:11 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/03/07 14:39:10 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:08:34 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ char	*get_line(int fd, char *line, char *buffer, int i)
 		return (NULL);
 	if (line != NULL)
 	{
-		j = 0;
-		while (j < i)
+		j = -1;
+		while (++j < i)
 		{
 			if (buffer[j] != '\n')
 				line[j] = buffer[j];
-			j++;
 		}
 	}
 	line[j] = '\0';

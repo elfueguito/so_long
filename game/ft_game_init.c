@@ -6,7 +6,7 @@
 /*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:21:59 by cbacquet          #+#    #+#             */
-/*   Updated: 2023/03/07 13:50:40 by cbacquet         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:07:16 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ int	ft_redraw_map(void *param)
 	ft_put_objects(prog);
 	ft_check_all(prog);
 	ft_finish(prog);
+}
+
+int	ft_close_mouse(void)
+{
+	exit(0);
 }
 
 int	ft_game_init(t_map *map)
